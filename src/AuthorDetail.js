@@ -1,16 +1,10 @@
 import React from "react";
+import BookRow from "./BookRow";
 const AuthorDetail = props => {
-  const BookDetail = props.author.books.map(book => {
-    return (
-      <tr>
-        <td>{book.title}</td>
-        <td>{`${props.author.first_name} ${props.author.last_name}`}</td>
-        <td>
-          <button className="btn" style={{ backgroundColor: book.color }} />
-        </td>
-      </tr>
-    );
-  });
+  const bookDetail = props.author.books.map(book => (
+    <BookRow author={props.author} book={book} key={book.title} />
+  ));
+
   return (
     <div className="author col-xs-10">
       <div>
@@ -29,7 +23,7 @@ const AuthorDetail = props => {
             <th>Color</th>
           </tr>
         </thead>
-        <tbody>{BookDetail}</tbody>
+        <tbody>{bookDetail}</tbody>
       </table>
     </div>
   );

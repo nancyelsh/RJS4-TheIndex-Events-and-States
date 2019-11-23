@@ -22,33 +22,22 @@ class App extends Component {
   };
 
   render() {
-    if (this.state.currentAuthor) {
-      return (
-        <div id="app" className="container-fluid">
-          <div className="row">
-            <div className="col-2">
-              <Sidebar unselectAuthor={this.unselectAuthor} />
-            </div>
-            <div className="content col-10">
+    return (
+      <div id="app" className="container-fluid">
+        <div className="row">
+          <div className="col-2">
+            <Sidebar unselectAuthor={this.unselectAuthor} />
+          </div>
+          <div className="content col-10">
+            {this.state.currentAuthor ? (
               <AuthorDetail author={this.state.currentAuthor} />
-            </div>
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div id="app" className="container-fluid">
-          <div className="row">
-            <div className="col-2">
-              <Sidebar />
-            </div>
-            <div className="content col-10">
+            ) : (
               <AuthorsList authors={authors} selectAuthor={this.selectAuthor} />
-            </div>
+            )}
           </div>
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
 

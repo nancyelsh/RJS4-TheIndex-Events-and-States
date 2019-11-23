@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { tsPropertySignature } from "@babel/types";
 
-function SearchBar() {
+function SearchBar(props) {
   const handleChange = event => {
     console.log(event.target.value);
+    props.filterAuthors(event.target.value);
   };
 
   return (
